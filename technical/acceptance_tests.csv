@@ -1,0 +1,24 @@
+﻿test_id,scenario,expected_result,execution_status
+INV-01,Two users attempt the last available room for identical nights,Exactly one claim/confirmation; loser is not captured and confirmed.,Not yet run against a production booking engine
+INV-02,Reservations overlap by one night,Second overlapping claim rejected; no partial multi-night booking.,Not yet run against a production booking engine
+INV-03,Departure and new arrival on the same day,Allowed only with configured turnover and no conflicting late checkout.,Not yet run against a production booking engine
+INV-04,Crew bundle races with a single-room booking,All bundle resources lock together or bundle fails; no duplicated child room.,Not yet run against a production booking engine
+INV-05,Manual phone/maintenance block is entered during checkout,Authority resolves the conflicting claim consistently; no second confirmation.,Not yet run against a production booking engine
+INV-06,External channel event arrives late or sync becomes unhealthy,Alert/stop-sale or request-only fallback; no blind paid instant confirmation.,Not yet run against a production booking engine
+PAY-01,Payment declined or customer leaves checkout,No confirmed reservation; hold expires/releases without duplicate charge.,Not yet run against a production booking engine
+PAY-02,Same signed payment webhook is delivered repeatedly,One transaction and one booking state transition.,Not yet run against a production booking engine
+PAY-03,Browser success URL is opened without valid payment,No confirmed booking.,Not yet run against a production booking engine
+PAY-04,Payment clears after hold expiry and room is sold,No second reservation; void/refund/reconciliation exception.,Not yet run against a production booking engine
+PAY-05,Webhook amount/currency/merchant/signature is wrong,Reject/quarantine event; do not confirm.,Not yet run against a production booking engine
+PAY-06,Guest pays reservation credit then balance,Credit deducted once; remaining amount accurate; security tracked separately.,Not yet run against a production booking engine
+PAY-07,Security authorization expires during longer stay,Expiry detected; only approved lawful reauthorization/alternative process; no indefinite-hold promise.,Not yet run against a production booking engine
+PAY-08,Cancellation and partial/full refund require retry,Accepted policy applied once; auditable refund and inventory state.,Not yet run against a production booking engine
+ID-01,Guest attempts to fetch another guest ID/booking,Denied on server; no private document or personal data disclosed.,Not yet run against a production booking engine
+ID-02,ID verification requires manual review past hold expiry,Dates released; fresh inventory and quote acceptance required before payment.,Not yet run against a production booking engine
+ID-03,Unsupported or malicious file is uploaded,Rejected/isolated; no executable public asset and no leaked ID URL.,Not yet run against a production booking engine
+RATE-01,Owner changes unsold rates after a confirmed booking,New shopping quote changes; confirmed booking amount does not.,Not yet run against a production booking engine
+RATE-02,Quote expires and automatic rate changes,Show and accept new quote before any charge.,Not yet run against a production booking engine
+RATE-03,Competitor feed is missing/stale or lacks enough comparable rooms,Use last approved rate and alert; never scrape or guess a live comparison.,Not yet run against a production booking engine
+TIME-01,"DST transition, local midnight, event minimum and max stay",Property-local nights and exact deadlines remain correct.,Not yet run against a production booking engine
+WEB-01,"Mobile screen reader, keyboard, camera upload and form errors",Usable labels/focus/errors; no sensitive values leak to analytics.,Not yet run against a production booking engine
+SEO-01,"Crawler visits checkout, draft, room and guide pages",Only substantive approved public pages index; no PII or false availability markup.,Not yet run against a production booking engine
